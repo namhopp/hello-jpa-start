@@ -2,6 +2,8 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -13,8 +15,15 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member findMember = em.find(Member.class, 1L);
-            findMember.setName("HelloJPA");
+
+            Member member = new Member();
+            //member.setId("ID_A");
+            member.setUsername("C");
+
+            System.out.println("====================");
+            em.persist(member);
+            System.out.println("member.getId() = " + member.getId());
+            System.out.println("====================");
 
             tx.commit();
         } catch (Exception e){
